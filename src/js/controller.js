@@ -36,18 +36,21 @@ const showRecipe = async function () {
 
 
   try {
-    renderSpinner(recipeContainer);
+  
 
     const id = window.location.hash.slice(1);
+    
     if (!id) return;
+    console.log(id)
 
+    renderSpinner(recipeContainer);
 
     const res = await fetch(
       `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
     );
     const data = await res.json();
 
-    console.log(data)
+//    console.log(data)
 
     if (!res.ok) throw new Error(`${data.message}`)(`${res.status}`)
 
